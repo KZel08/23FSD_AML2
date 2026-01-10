@@ -1,0 +1,33 @@
+# Node modules
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# Build outputs
+dist/
+build/
+
+# Vite cache
+.vite/
+
+# Environment files
+.env
+.env.*
+
+# Test coverage
+coverage/
+
+# Editor directories
+.idea/
+
+# macOS
+.DS_Store
+
+# Misc
+.cache/
+/.parcel-cache/
