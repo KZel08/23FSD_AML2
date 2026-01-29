@@ -11,10 +11,10 @@ A simple web application for esports streaming built with Vite and vanilla JavaS
 - Basic interactivity with JavaScript
 
 ### Login Screen
-![Image1](screenshots/img1.png)
+![Image1](Screenshots/img1.png)
 
 ### Dashboard
-![Image2](screenshots/img2.png)
+![Image2](Screenshots/img2.png)
 
 ## Getting Started
 
