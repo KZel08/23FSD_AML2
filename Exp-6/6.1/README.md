@@ -40,11 +40,6 @@ This approach enables validation, conditional rendering, and real-time form data
 
 ---
 
-### Form Inputs Filled Using Controlled Components
-![Filled Form](screenshots/userform2.png)
-
----
-
 ### Registration Successful Output
 ![Registration Success](screenshots/Loginsuccess.png)
 

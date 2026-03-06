@@ -114,6 +114,7 @@ body {
 .form-group input[type="email"],
 .form-group input[type="password"],
 .form-group input[type="tel"],
+.form-group input[type="date"],
 .form-group select,
 .form-group textarea {
   padding: 10px;
@@ -133,6 +134,7 @@ body {
 }
 
 .form-group input.error,
+.form-group input[type="date"].error,
 .form-group select.error,
 .form-group textarea.error {
   border-color: #f56565;
@@ -140,7 +142,7 @@ body {
 
 .form-group textarea {
   resize: vertical;
-  min-height: 80px;
+  min-height: 40px;
 }
 
 /* Radio and Checkbox Groups */
@@ -182,6 +184,41 @@ body {
   margin-top: -4px;
 }
 
+/* Date Display */
+.date-display {
+  font-size: 0.85rem;
+  color: #667eea;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+/* DOB Selector */
+.dob-selector {
+  display: flex;
+  gap: 10px;
+}
+
+.dob-selector select {
+  flex: 1;
+  padding: 10px;
+  border: 2px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  background-color: white;
+}
+
+.dob-selector select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.dob-selector select.error {
+  border-color: #f56565;
+}
+
 /* Error Messages */
 .error-message {
   color: #f56565;
@@ -217,6 +254,42 @@ body {
 
 .submit-btn:active {
   transform: translateY(0);
+}
+
+/* Cancel Button */
+.cancel-btn {
+  padding: 12px 28px;
+  background: #718096;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 8px;
+}
+
+.cancel-btn:hover {
+  background: #4a5568;
+  transform: translateY(-2px);
+}
+
+.cancel-btn:active {
+  transform: translateY(0);
+}
+
+/* Button Group */
+.button-group {
+  display: flex;
+  gap: 15px;
+  margin-top: 8px;
+}
+
+.button-group .submit-btn,
+.button-group .cancel-btn {
+  flex: 1;
+  max-width: 200px;
 }
 
 /* Success Message */
