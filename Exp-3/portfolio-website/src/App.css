@@ -1,0 +1,16 @@
+/* Minimal CSS for App - Material UI handles most styling */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+.main-content {
+  flex: 1;
+  padding-top: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
