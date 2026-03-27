@@ -31,16 +31,13 @@ If you manually switch to a different parent and actually want the inheritance, 
 ![Screenshot 1](screenshots/1.png)
 
 ### Screenshot 2
-![Screenshot 2](screenshots/2.png)
+![GET](screenshots/2.png)
 
 ### Screenshot 3
-![Screenshot 3](screenshots/3.png)
+![POST](screenshots/3.png)
 
 ### Screenshot 4
-![Screenshot 4](screenshots/4.png)
+![PUT](screenshots/4.png)
 
 ### Screenshot 5
-![Screenshot 5](screenshots/5.png)
-
-### Screenshot 6
-![Screenshot 6](screenshots/6.png)
+![DELETE](screenshots/5.png)
