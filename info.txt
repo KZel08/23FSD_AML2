@@ -1,0 +1,366 @@
+Exp-8 Project Details
+=====================
+
+1. README.md
+------------
+# Getting Started
+
+### Reference Documentation
+For further reference, please consider the following sections:
+
+* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
+* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/4.0.3/maven-plugin)
+* [Create an OCI image](https://docs.spring.io/spring-boot/4.0.3/maven-plugin/build-image.html)
+* [Spring Web](https://docs.spring.io/spring-boot/4.0.3/reference/web/servlet.html)
+* [Spring Data JPA](https://docs.spring.io/spring-boot/4.0.3/reference/data/sql.html#data.sql.jpa-and-spring-data)
+
+### Guides
+The following guides illustrate how to use some features concretely:
+
+* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
+* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
+* [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
+* [Accessing data with MySQL](https://spring.io/guides/gs/accessing-data-mysql/)
+* [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
+
+### Maven Parent overrides
+Due to Maven's design, elements are inherited from the parent POM to the project POM.
+While most of the inheritance is fine, it also inherits unwanted elements like `<license>` and `<developers>` from the parent.
+To prevent this, the project POM contains empty overrides for these elements.
+If you manually switch to a different parent and actually want the inheritance, you need to remove those overrides.
+
+## Screenshots
+
+### Screenshot 1
+![Screenshot 1](screenshots/1.png)
+
+### GET
+![GET](screenshots/2.png)
+
+### POST
+![POST](screenshots/3.png)
+
+### PUT
+![PUT](screenshots/4.png)
+
+### DELETE
+![DELETE](screenshots/5.png)
+
+
+2. pom.xml
+----------
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>4.0.3</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.AIML2A</groupId>
+	<artifactId>Rest-Api</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>Rest-Api</name>
+	<description>Demo project for Spring Boot</description>
+	<url/>
+	<licenses>
+		<license/>
+	</licenses>
+	<developers>
+		<developer/>
+	</developers>
+	<scm>
+		<connection/>
+		<developerConnection/>
+		<tag/>
+		<url/>
+	</scm>
+	<properties>
+		<java.version>21</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webmvc</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webmvc-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+</project>
+
+
+3. application.properties
+-------------------------
+# MySQL Configuration
+spring.datasource.url=jdbc:mysql://localhost:3306/chandigarh_university
+spring.datasource.username=root
+spring.datasource.password=1234
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+# Hibernate Configuration
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
+
+# Server Port
+server.port=8081
+
+
+4. Source Code Structure
+------------------------
+src/main/java/com/AIML2A/Rest_Api/
+├── RestApiApplication.java
+├── controller/
+│   └── StudentController.java
+├── model/
+│   └── Student.java
+├── repository/
+│   └── StudentRepository.java
+└── service/
+    └── StudentService.java
+
+src/test/java/com/AIML2A/Rest_Api/
+└── RestApiApplicationTests.java
+
+
+5. Key Source Files
+-------------------
+
+5.1 RestApiApplication.java
+package com.AIML2A.Rest_Api;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class RestApiApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(RestApiApplication.class, args);
+	}
+
+}
+
+5.2 Student.java (Model)
+package com.AIML2A.Rest_Api.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
+public class Student {
+	@Id
+	private int id;
+	private String name;
+	private String course;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getCourse() {
+		return course;
+	}
+	public void setCourse(String course) {
+		this.course = course;
+	}
+}
+
+5.3 StudentRepository.java
+package com.AIML2A.Rest_Api.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.AIML2A.Rest_Api.model.Student;
+
+public interface StudentRepository extends JpaRepository<Student,Integer>{
+}
+
+5.4 StudentService.java
+package com.AIML2A.Rest_Api.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.AIML2A.Rest_Api.model.Student;
+import com.AIML2A.Rest_Api.repository.StudentRepository;
+
+@Service
+public class StudentService {
+
+	@Autowired
+	private StudentRepository repository;
+
+	// ✅ GET ALL
+	public List<Student> getAllStudents() {
+		return repository.findAll();
+	}
+
+	// ✅ GET BY ID (FIXED)
+	public Student getStudentById(int id) {
+		return repository.findById(id).orElse(null);
+	}
+
+	// ✅ SAVE (POST + PUT)
+	public Student saveStudent(Student student) {
+		return repository.save(student);
+	}
+
+	// ✅ DELETE
+	public boolean deleteStudent(int id) {
+		if (!repository.existsById(id)) {
+			return false;
+		}
+		repository.deleteById(id);
+		return true;
+	}
+}
+
+5.5 StudentController.java
+package com.AIML2A.Rest_Api.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import com.AIML2A.Rest_Api.model.Student;
+import com.AIML2A.Rest_Api.service.StudentService;
+
+@RestController
+@RequestMapping("/api/students")
+public class StudentController {
+
+    @Autowired
+    private StudentService service;
+
+    // ✅ GET ALL
+    @GetMapping
+    public List<Student> getStudents() {
+        return service.getAllStudents();
+    }
+
+    // ✅ GET BY ID
+    @GetMapping("/{id}")
+    public ResponseEntity<Student> getStudentById(@PathVariable int id) {
+        Student student = service.getStudentById(id);
+
+        if (student == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(student, HttpStatus.OK);
+    }
+
+    // ✅ POST (ADD)
+    @PostMapping
+    public ResponseEntity<Student> addStudent(@RequestBody Student student) {
+        Student saved = service.saveStudent(student);
+        return new ResponseEntity<>(saved, HttpStatus.CREATED);
+    }
+
+    // ✅ PUT (UPDATE)
+    @PutMapping("/{id}")
+    public ResponseEntity<Student> updateStudent(@PathVariable int id, @RequestBody Student student) {
+        student.setId(id);
+        Student updated = service.saveStudent(student);
+        return new ResponseEntity<>(updated, HttpStatus.OK);
+    }
+
+    // ✅ DELETE
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteStudent(@PathVariable int id) {
+        boolean deleted = service.deleteStudent(id);
+
+        if (!deleted) {
+            return new ResponseEntity<>("Student not found", HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>("Student deleted successfully", HttpStatus.OK);
+    }
+}
+
+5.6 RestApiApplicationTests.java
+package com.AIML2A.Rest_Api;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class RestApiApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
+
+
+6. Screenshots
+--------------
+The project includes screenshots demonstrating the API endpoints:
+- 1.png: Screenshot 1 (likely API testing interface)
+- 2.png: GET request
+- 3.png: POST request
+- 4.png: PUT request
+- 5.png: DELETE request
+
+7. Build and Run
+----------------
+The project is a Spring Boot application using Maven.
+To build: mvn clean install
+To run: mvn spring-boot:run
+The application runs on port 8081 (as configured in application.properties).
+The base URL for the API is http://localhost:8081/api/students
+
+8. Dependencies
+---------------
+- Spring Boot Starter Data JPA
+- Spring Boot Starter Web MVC
+- MySQL Connector J (runtime)
+- Spring Boot Starter Data JPA Test (test)
+- Spring Boot Starter Web MVC Test (test)
+
+9. Java Version
+---------------
+Java 21 is used (as specified in pom.xml).
