@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1a1a1a;
+  color: white;
+  font-family: sans-serif;
+}
+
+.card {
+  padding: 2rem;
+  background: #242424;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  text-align: center;
+}
+
+.counter-box h2 {
+  font-size: 3rem;
+  margin: 1rem 0;
+  color: #646cff;
+}
+
+.button-group button {
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background-color: #1a1a1a;
+  color: white;
+  font-weight: bold;
+}
+
+.button-group button:hover {
+  border-color: #646cff;
+}
+
+.reset-btn {
+  background-color: #ff4646 !important;
+}

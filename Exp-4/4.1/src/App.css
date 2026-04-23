@@ -1,0 +1,41 @@
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.content-box {
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.light {
+  background-color: #f0f0f0;
+  color: #1a1a1a;
+}
+
+.dark {
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+}
+
+.toggle-btn {
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  margin-top: 15px;
+}
+
+.toggle-btn:hover {
+  background-color: #0056b3;
+}
